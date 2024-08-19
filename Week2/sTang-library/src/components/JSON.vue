@@ -132,8 +132,6 @@ import { ref, computed } from 'vue'
 import authors from '../assets/json/authors.json'
 import bookstores from '../assets/json/bookstores.json'
 
-console.log(authors)
-
 const showMessage = ref(false)
 
 // Activity 2: Get authors born after 1850
@@ -160,8 +158,6 @@ const austen = computed(() => {
   return authors.find((author) => author.id === 1)
 })
 
-console.log(modernAuthors.value)
-console.log(allFamousWorks.value)
 </script>
 
 <style scoped>

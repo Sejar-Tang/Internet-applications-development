@@ -1,0 +1,19 @@
+<template>
+    <div class="about">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h1 class="text-center">About Our Library</h1>
+                    <p class="text-center">Welcome to our digital library! We're dedicated to providing a vast collection of books and resources to our community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+  
+<script setup>
+</script>
+  
+
+<style scoped>
+</style>

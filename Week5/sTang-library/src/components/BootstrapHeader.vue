@@ -1,22 +1,47 @@
 <template>
-  <!-- Using Bootstrap's Header template (starter code) -->
-  <!-- https://getbootstrap.com/docs/5.0/examples/headers/ -->
   <div id="app">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <router-link to="/" class="nav-link" active-class="active" aria-current="page"
-            >Home (Week 5)</router-link>
+          <router-link to="/" class="nav-link" active-class="active" aria-current="page">
+            Home (Week 5)
+          </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="!isAuthenticated" to="/login" class="nav-link" active-class="active">Login</router-link>
+          <a v-else @click="logout" class="nav-link">Logout</a>
         </li>
       </ul>
     </header>
   </div>
 </template>
-  
-  <style scoped>
+
+<script setup>
+import { ref, watchEffect, computed } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const isAuthenticated = ref(false);
+
+const authStatus = computed(() => {
+  return localStorage.getItem('isAuthenticated') === 'true';
+});
+
+watchEffect(() => {
+  isAuthenticated.value = authStatus.value;
+});
+
+const logout = () => {
+  localStorage.removeItem('isAuthenticated');
+  isAuthenticated.value = false;
+  router.push('/login');
+};
+</script>
+
+<style scoped>
   .b-example-divider {
     height: 3rem;
     background-color: rgba(0, 0, 0, 0.1);
